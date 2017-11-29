@@ -1,11 +1,10 @@
 version: 2
 
 jobs:
-  build__LLVM_VARIANT_cling__CONDA_PY_36:
+  build_CONDA_PY_36:
     working_directory: ~/test
     machine: true
     environment:
-      - LLVM_VARIANT: "cling"
       - CONDA_PY: "36"
     steps:
       - checkout
@@ -19,7 +18,6 @@ jobs:
       - run:
           name: Print conda-build environment variables
           command: |
-            echo "LLVM_VARIANT=${LLVM_VARIANT}"
             echo "CONDA_PY=${CONDA_PY}"
       - run:
           # Run, test and (if we have a BINSTAR_TOKEN) upload the distributions.
@@ -29,4 +27,4 @@ workflows:
   version: 2
   build_and_test:
     jobs:
-      - build__LLVM_VARIANT_cling__CONDA_PY_36
+      - build_CONDA_PY_36
