@@ -1,0 +1,79 @@
+package:
+    name: cling
+    version: 0.5
+source:
+    fn: cling-0.5.tar.gz
+    url: https://github.com/root-project/cling/archive/v0.5.tar.gz
+    patches:
+      - cling-patches/0002-BBVectorize-flag-was-unused-and-went-away-in-LLVM-5..patch
+      - cling-patches/0003-file_magic-went-into-its-own-header-file.patch
+      - cling-patches/0004-Follow-recent-changes-in-the-OptTable.patch
+      - cling-patches/0005-Use-the-setter.patch
+      - cling-patches/0006-Do-not-prevent-copy-elision.patch
+      - cling-patches/0007-Follow-recent-LLVM-changes.patch
+      - cling-patches/0008-Make-this-code-path-unreachable.patch
+      - cling-patches/0009-The-annotation-token-became-a-special-one.patch
+      - cling-patches/0010-Bump-the-last-known-good-llvm-revision-to-point-to-r.patch
+      - cling-patches/0011-Do-not-forget-to-return-from-the-function.patch
+      - cling-patches/0012-Return-0-if-we-cannot-find-an-address.patch
+      - cling-patches/0013-LLVM-5.0-comes-with-special-library-lookup-ordering-.patch
+      - cling-patches/0014-Rely-on-Azog-to-allocate-the-memory-in-an-exception-.patch
+      - cling-patches/0015-Spelling.patch
+      - cling-patches/0016-Switch-back-to-O0.patch
+      - cling-patches/0017-Use-g-instead-of-f-to-preserve-precision.patch
+      - cling-patches/0018-Fix-thread-local-storage-in-the-cling-JIT.patch
+      - cling-patches/0019-Fix-formatting-of-the-TLS-commit.patch
+      - cling-patches/0020-Multiplex-the-ExternalASTSource-in-cling.patch
+      - cling-patches/0021-Adapt-to-format-changes-in-floating-point-value-prin.patch
+      - cling-patches/0022-Adapt-to-new-default-opt-level.patch
+      - cling-patches/0023-Work-around-an-issue-being-resolved-in-PR1306.patch
+      - cling-patches/0024-Fix-typo-we-want-to-suppress-diag-not-enable-it.patch
+      - cling-patches/0025-Address-ROOT-9114-Issues-with-dictionary-s-enum-forw.patch
+      - cling-patches/0026-Disable-module-file-validation.patch
+      - cling-patches/0027-conda-packaging.patch
+build:
+    features:
+        - cling
+    noarch: ''
+    noarch_python: false
+    number: '1'
+    string: cling_1
+requirements:
+    build:
+        - cmake
+        - toolchain
+        - cling-patches
+        - libgcc-7        # [linux and not armv7l]
+        - llvmdev 5.0.0
+        - clangdev 5.0.0
+    run:
+        - cling-patches
+        - vs2015_runtime  # [win]
+        - libgcc-7        # [linux and not armv7l]
+        - llvmdev ==5.0.0
+        - clangdev ==5.0.0
+test:
+    commands:
+        - if exist %LIBRARY_BIN%\cling (exit 0) else (exit 1)                          # [win]
+        - test -f $PREFIX/bin/cling                                                    # [unix]
+about:
+    description: 'Cling is an interactive C++ interpreter, built on top of Clang and
+        LLVM compiler infrastructure. Cling realizes the read-eval-print loop (REPL)
+        concept, in order to leverage rapid application development. Implemented as
+        a small extension to LLVM and Clang, the interpreter reuses their strengths
+        such as the praised concise and expressive compiler diagnostics.
+
+        '
+    dev_url: https://github.com/root-mirror/cling
+    doc_url: https://root.cern.ch/cling
+    home: https://root.cern.ch/cling
+    license: UI/NCSAOSL
+    license_family: BSD
+    license_file: LICENSE.TXT
+    summary: Cling - The Interactive C++ Interpreter
+extra:
+    final: true
+    recipe-maintainers:
+        - SylvainCorlay
+        - JohanMabille
+        - gouarin
