@@ -10,20 +10,21 @@ environment:
 
   matrix:
     - TARGET_ARCH: x86
-      LLVM_VARIANT: cling
       CONDA_PY: 36
       CONDA_INSTALL_LOCN: C:\\Miniconda36
 
-    - TARGET_ARCH: x64
-      LLVM_VARIANT: cling
-      CONDA_PY: 36
-      CONDA_INSTALL_LOCN: C:\\Miniconda36-x64
+    # - TARGET_ARCH: x64
+    #   CONDA_PY: 36
+    #   CONDA_INSTALL_LOCN: C:\\Miniconda36-x64
 
 
 # We always use a 64-bit machine, but can build x86 distributions
 # with the TARGET_ARCH variable.
 platform:
     - x64
+
+init:
+  - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 
 install:
     # If there is a newer build queued for the same PR, cancel this one.
@@ -59,3 +60,6 @@ test_script:
     - conda build recipe --quiet
 deploy_script:
     - cmd: upload_or_check_non_existence .\recipe gouarin --channel=main
+
+on_finish:
+  - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
