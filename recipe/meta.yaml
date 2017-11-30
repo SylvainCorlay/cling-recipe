@@ -42,6 +42,7 @@ requirements:
     build:
         - cmake
         - toolchain
+        - ninja
         - cling-patches
         - gcc-7           # [linux and not armv7l]
         - llvmdev 5.0.0
