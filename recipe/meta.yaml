@@ -55,7 +55,7 @@ requirements:
         - clangdev ==5.0.0
 test:
     commands:
-        - if exist %LIBRARY_BIN%\cling (exit 0) else (exit 1)                          # [win]
+        #- if exist %LIBRARY_BIN%\cling (exit 0) else (exit 1)                          # [win]
         - test -f $PREFIX/bin/cling                                                    # [unix]
 about:
     description: 'Cling is an interactive C++ interpreter, built on top of Clang and
