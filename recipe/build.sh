@@ -23,5 +23,5 @@ cmake \
   ${EXTRA_CMAKE_ARGS} \
   $SRC_DIR
 
-make
+make -j${CPU_COUNT}
 make install

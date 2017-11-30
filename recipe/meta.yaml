@@ -49,7 +49,7 @@ requirements:
     run:
         - cling-patches
         - vs2015_runtime  # [win]
-        - libgcc-7        # [linux and not armv7l]
+        - gcc-7           # [linux and not armv7l]
         - llvmdev ==5.0.0
         - clangdev ==5.0.0
 test:
