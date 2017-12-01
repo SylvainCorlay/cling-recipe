@@ -6,7 +6,7 @@ source:
     url: https://github.com/root-project/cling/archive/v0.5.tar.gz
     patches:
       - cling-patches/0001-remove-jupyter.patch
-      - cling-patches/0002-BBVectorize-flag-was-unused-and-went-away-in-LLVM-5.patch
+      - cling-patches/0002-BBVectorize-flag-was-unused-and-went-away-in-LLVM-5..patch
       - cling-patches/0003-file_magic-went-into-its-own-header-file.patch
       - cling-patches/0004-Follow-recent-changes-in-the-OptTable.patch
       - cling-patches/0005-Use-the-setter.patch
