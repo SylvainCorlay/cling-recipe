@@ -36,7 +36,7 @@ source:
 build:
     features:
         - cling
-        - vc14
+        - vc14     # [win and py36]
     noarch: ''
     noarch_python: false
     number: '3'
