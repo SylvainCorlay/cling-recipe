@@ -36,10 +36,11 @@ source:
 build:
     features:
         - cling
+        - vc14
     noarch: ''
     noarch_python: false
-    number: '2'
-    string: '2'
+    number: '3'
+    string: '3'
 requirements:
     build:
         - cmake
