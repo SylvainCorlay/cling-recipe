@@ -2,10 +2,8 @@ language: generic
 os: osx
 osx_image: xcode6.4
 env:
-  matrix:
-  - CONDA_PY=36
   global:
-    secure: AjUz/RvZpV3PbESrU/ONVHGufaFKvL8cf3nWqUQygL2g6EShlbpFzIJvJGiEJNFgeMMAE79mLaZGuE3RblB62hUWyk+X8Okq/vTLTVHDyIB/fpApfcYCH2yYFANEaj3iLuwfG7ndBSWwtKu8lNnPpxELwooBEs+Tbbbjtv6UJCmAtZQbZ7MQ4Vhn6g8s37fE//csmrdIJXZ4TOd8OiR+ud4eRkfNfXhp3HeJvzS631ntiTh0FHRjOWY4sEHtM0zYOuGXiwlz9sRnK4ZdVMAty4A28QfUJ68jn4AFbgAF9kKMmKXVPz6+Q/oZCkBWHahjP7xUEPRSZiO8RF9XI5VIIjc4bNDLZKfD57YiwxE+aBu/xYihg72iySaliVjQHrvbm0iqcz9BcUhqzUUb7e2iWtrMMMWGvABpmrZofS5TYdhfCNHVIdmgwIwz6ZKHmmIwmwX4sKiQ6OsDNLxizaUcboSiwb/Pd4txSSBlwMWkO93GenQNWLxxjROdPl71Ef28ajfyHlhc33PYx5705qPc3Wk3gGttRloa0m3DY4/VQEGrJIaFitLpWZA3mub9g7bBy1WOkeE9hRdfaHv+hgBu9Vjb3ocrh2Cdr7jr/0+0yyQYT22Zs9sF3KD4ZnGXOn2h5dFdB+ruL8Pa/dD8RqCOTA5aVDYsBELnj/40QEumoO8=
+  - secure: hdpbjiQrHt/VB6vhoxM7EnKfl4hJeefPHUxDcw+PZ+kZ91S+QcTcbHfqntwdTvYSTexpbzutr651gQFmOL/W9XhCOir4Ji2BD16FJ0Ofzj8f2/shlPTCgUx2rwtUWVR0ghDtMZ9k/0MdT+CbGWTVyxIea6YH5tqyeCMxD4xdkuPwUPw7T1D1yfWCqDePVJYZNaL+72fZn9ANzceutF5O5WMl0dwiccuzaUnAdyYkMAmO3HTmENsxKX8ruPoakWu9MmXAYGYRgpdbANFsn+Smtf4f6IYOy5xjdqt5kfTSeWYG4bjPvrFDMV+J0+HnjHjiBhARfkF8K4BxwQvaaBRATaZusS8vBNXicKqJpAws6UhVyLVLKmkReZ0u1Xn3xgrGTVBwt+Vj4Q8zfMzgZeBWUDESZqwkRu2Vr/DZp2uRZCAnrPWdIFN+sg9/pkYSoY8aZJN68RIsVMq067YNIOGFi8mzBJeNaM3TyKaT28Q02H9R5S3vRw7S8flR0HFEtJJyvni5KBiK14IYZx9IqfVqbdkAF+m2Yf6dZfiWygNGWRuInGITxvCMmqlQ1vOrYOdwlTwwk7BE18xAOu6rXkFdSs02cCKmAgP8ep7VihljRWTiy6anbhkGIDWQmkE0vsYb97wZe+uwYEZF5qBoehtHWKXv9tWe0AtF4QliGJRgkVc=
 before_install:
 - |
   (curl https://raw.githubusercontent.com/conda-forge/conda-forge-build-setup-feedstock/master/recipe/ff_ci_pr_build.py | \
@@ -32,10 +30,10 @@ install:
   conda config --remove channels defaults
   conda config --add channels defaults
   conda config --add channels conda-forge
-  conda config --add channels gouarin
+  conda config --add channels QuantStack
   conda config --set show_channel_urls true
   conda install --yes --quiet conda-forge-build-setup
   source run_conda_forge_build_setup
 script:
 - conda build ./recipe
-- upload_or_check_non_existence ./recipe gouarin --channel=main
+- upload_or_check_non_existence ./recipe QuantStack --channel=main

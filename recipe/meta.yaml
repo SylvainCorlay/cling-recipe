@@ -33,14 +33,12 @@ source:
       - cling-patches/0025-Address-ROOT-9114-Issues-with-dictionary-s-enum-forw.patch
       - cling-patches/0026-Disable-module-file-validation.patch
       - cling-patches/0027-conda-packaging.patch
+      - cling-patches/0001-Workaround-overload-of-operator.patch
 build:
     features:
         - cling
         - vc14     # [win and py36]
-    noarch: ''
-    noarch_python: false
-    number: '3'
-    string: '3'
+    number: 4
 requirements:
     build:
         - cmake
@@ -50,12 +48,14 @@ requirements:
         - gcc-7           # [linux and not armv7l]
         - llvmdev 5.0.0
         - clangdev 5.0.0
+        - libcxx ==5.0.0
     run:
         - cling-patches
         - vs2015_runtime  # [win]
         - gcc-7           # [linux and not armv7l]
         - llvmdev ==5.0.0
         - clangdev ==5.0.0
+        - libcxx ==5.0.0
 test:
     commands:
         #- if exist %LIBRARY_BIN%\cling (exit 0) else (exit 1)                          # [win]
