@@ -33,12 +33,12 @@ source:
       - cling-patches/0025-Address-ROOT-9114-Issues-with-dictionary-s-enum-forw.patch
       - cling-patches/0026-Disable-module-file-validation.patch
       - cling-patches/0027-conda-packaging.patch
-      - cling-patches/0001-Workaround-overload-of-operator.patch
+      - cling-patches/0001-Use-a-stable-way-to-determine-the-address-of-printed.patch
 build:
     features:
         - cling
         - vc14     # [win and py36]
-    number: 4
+    number: 5
 requirements:
     build:
         - cmake
